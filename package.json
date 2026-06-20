@@ -1,14 +1,19 @@
 {
   "name": "expin",
   "version": "1.0.0",
-  "main": "index.ts",
+  "main": "expo-router/entry",
   "dependencies": {
     "@expo/metro-runtime": "~56.0.15",
-    "@react-navigation/native": "^7.3.3",
-    "@react-navigation/native-stack": "^7.17.5",
+    "@react-native-async-storage/async-storage": "2.2.0",
+    "@react-native-community/netinfo": "11.5.1",
+    "@shopify/flash-list": "^2.2.0",
     "@tanstack/react-query": "^5.101.0",
     "axios": "^1.18.0",
     "expo": "~56.0.12",
+    "expo-linking": "~9.0.9",
+    "expo-localization": "~18.0.8",
+    "expo-router": "~6.1.10",
+    "expo-secure-store": "~16.0.8",
     "expo-status-bar": "~56.0.4",
     "i18next": "^26.3.1",
     "nativewind": "^4.2.5",
@@ -24,6 +29,14 @@
   },
   "devDependencies": {
     "@types/react": "~19.2.2",
+    "@typescript-eslint/eslint-plugin": "^8.51.0",
+    "@typescript-eslint/parser": "^8.51.0",
+    "eslint": "^9.39.1",
+    "eslint-config-expo": "~11.0.0",
+    "eslint-config-prettier": "^10.1.8",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
+    "prettier": "^3.7.3",
     "tailwindcss": "^3.4.19",
     "typescript": "~6.0.3"
   },
@@ -31,7 +44,17 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "lint": "eslint . --max-warnings=0",
+    "typecheck": "tsc --noEmit",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,yml,yaml}": "prettier --write"
   },
   "private": true
 }
